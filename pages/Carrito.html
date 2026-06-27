@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carrito de compras - Construmart">
+    <title>Carrito de Compras - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions" style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;"></div>
+        </div>
+
+        <div class="user-options">
+            <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> > Carrito de Compras</p>
+        
+        <div class="cart-container">
+            <div class="cart-items">
+                <h2>Carro de compras</h2>
+                <div id="cart-items-list">
+                    <div class="empty-cart">
+                        <h2>El carrito está vacío :c</h2>
+                        <p>Agrega productos para comenzar tu compra</p>
+                        <a href="../index.html" class="continue-shopping">Continuar Comprando</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h3 class="summary-title">Resumen de tu compra:</h3>
+                
+                <div class="coupon-section">
+                    <label>🎟️ Agregar cupón</label>
+                    <div class="coupon-input">
+                        <input type="text" id="coupon-input" placeholder="Código">
+                        <button class="apply-btn">Aplicar</button>
+                    </div>
+                    <p style="font-size: 0.85em; color: #999; margin-top: 8px;">
+                        Si tu cupón tiene promoción con Tarjeta!, el descuento se verá reflejado al momento de elegir el medio de pago.
+                    </p>
+                </div>
+
+                <div class="summary-row">
+                    <span>Total productos</span>
+                    <span id="products-total">S/ 0.00</span>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="final-total">S/ 0.00</span>
+                </div>
+
+                <div class="summary-row" style="color: #4CAF50; font-weight: bold;">
+                    <span>Subtotal con <span class="discount-badge">Tarjeta Construmart!</span></span>
+                    <span id="subtotal-discount">S/ 0.00</span>
+                </div>
+
+                <p class="summary-note">
+                    Calcula tus cuotas con Tarjeta!
+                </p>
+
+                <button class="checkout-btn">Ir a Pagar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Sostenibilidad</a></li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../js/cupones.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/busqueda.js"></script>
+</body>
+</html>

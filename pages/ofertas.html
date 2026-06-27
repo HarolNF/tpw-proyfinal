@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Las mejores ofertas en construcción y mejoramiento del hogar.">
+    <title>Ofertas y Liquidación - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions"
+                style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;">
+            </div>
+        </div>
+
+        <div class="user-options">
+            <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html" style="color: #FFD700;">Ofertas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> > Ofertas</p>
+
+        <div class="category-container">
+
+            <aside class="filters-sidebar">
+                <h3>Filtrar Ofertas</h3>
+
+                <details class="filter-group" open>
+                    <summary>Categoría</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Herramientas</label></li>
+                        <li><label><input type="checkbox"> Pisos y Acabados</label></li>
+                        <li><label><input type="checkbox"> Baño y Gasfitería</label></li>
+                        <li><label><input type="checkbox"> Materiales</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group" open>
+                    <summary>Descuento</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> 50% o más</label></li>
+                        <li><label><input type="checkbox"> 30% a 40%</label></li>
+                        <li><label><input type="checkbox"> 10% a 20%</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Precio</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Hasta S/ 50.00</label></li>
+                        <li><label><input type="checkbox"> S/ 50.00 - S/ 150.00</label></li>
+                        <li><label><input type="checkbox"> Más de S/ 150.00</label></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="products-content">
+                <h2 style="color: #E65000;">🔥 Super Ofertas de la Semana</h2>
+
+                <div class="product-grid">
+
+                    <article class="product-card" data-category="Herramientas">
+                        <div class="badge" style="background-color: #d32f2f;">-30%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/Taladroinalambrico.png" alt="Taladro DeWalt"
+                                onerror="this.src='https://via.placeholder.com/200?text=Taladro'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío Gratis</p>
+                            <p class="brand">DeWalt</p>
+                            <h4>Taladro Percutor Inalámbrico 20V + Maleta</h4>
+                            <p class="price">S/ 450.00 <span class="old-price">S/ 650.00</span></p>
+                            <button class="btn" data-id="oft-001" data-name="Taladro Percutor DeWalt 20V"
+                                data-brand="DeWalt" data-price="450.00"
+                                data-image="img/Taladroinalambrico.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-category="Pisos y Acabados">
+                        <div class="badge">-20%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/PorcelanatoMadera.jpg" alt="Porcelanato Madera"
+                                onerror="this.src='https://via.placeholder.com/200?text=Porcelanato'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Retiro en tienda</p>
+                            <p class="brand">Celima</p>
+                            <h4>Porcelanato Tipo Madera 60x60 cm (m²)</h4>
+                            <p class="price">S/ 39.90 <span class="old-price">S/ 49.90</span></p>
+                            <button class="btn" data-id="oft-002" data-name="Porcelanato Tipo Madera 60x60"
+                                data-brand="Celima" data-price="39.90"
+                                data-image="img/PorcelanatoMadera.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-category="Baño y Gasfitería">
+                        <div class="badge badge-new">LIQUIDACIÓN</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/MezcladoraDuchaNegroMate.jpg" alt="Mezcladora Ducha"
+                                onerror="this.src='https://via.placeholder.com/200?text=Ducha'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">Orange</p>
+                            <h4>Mezcladora de Ducha Negro Mate Moderna</h4>
+                            <p class="price">S/ 179.00 <span class="old-price">S/ 250.00</span></p>
+                            <button class="btn" data-id="oft-003" data-name="Mezcladora Ducha Negro Mate"
+                                data-brand="Orange" data-price="179.00"
+                                data-image="img/MezcladoraDuchaNegroMate.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-category="Materiales">
+                        <div class="badge">-25%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/BaldePintura.jpg" alt="Pintura Latex"
+                                onerror="this.src='https://via.placeholder.com/200?text=Pintura'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">CPP</p>
+                            <h4>Pintura Latex Lavable Blanco Humo 4L</h4>
+                            <p class="price">S/ 65.00 <span class="old-price">S/ 85.00</span></p>
+                            <button class="btn" data-id="oft-004" data-name="Pintura Latex CPP 4L" data-brand="CPP"
+                                data-price="65.00" data-image="img/BaldePintura.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="badge">-10%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/CementoPortland.png" alt="Cemento Inka"
+                                onerror="this.src='https://via.placeholder.com/200?text=Cemento'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Solo retiro</p>
+                            <p class="brand">Inka</p>
+                            <h4>Cemento Portland Tipo I - Bolsa 42.5kg</h4>
+                            <p class="price">S/ 28.50 <span class="old-price">S/ 32.00</span></p>
+                            <button class="btn" data-id="oft-005" data-name="Cemento Portland Inka 42.5kg"
+                                data-brand="Inka" data-price="28.50"
+                                data-image="img/CementoPortland.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="badge" style="background-color: #d32f2f;">-45%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/BloqueVidrioNeutro.jpg" alt="Bloque Vidrio"
+                                onerror="this.src='https://via.placeholder.com/200?text=Bloque+Vidrio'">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">DecoGlass</p>
+                            <h4>Bloque de Vidrio Neutro Decorativo</h4>
+                            <p class="price">S/ 5.90 <span class="old-price">S/ 10.90</span></p>
+                            <button class="btn" data-id="oft-006" data-name="Bloque de Vidrio Neutro"
+                                data-brand="DecoGlass" data-price="5.90"
+                                data-image="img/BloqueVidrioNeutro.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Sostenibilidad</a></li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/carrito.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/busqueda.js"></script>
+    <script src="../js/filtros.js"></script>
+    <script src="../js/zoom.js"></script>
+</body>
+
+</html>

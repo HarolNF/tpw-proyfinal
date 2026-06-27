@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body style="background-color: #f4f4f4;">
+
+    <header style="justify-content: center;">
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+    </header>
+
+    <div class="checkout-stepper">
+        <div class="step completed">
+            <div class="step-circle">1</div>
+            <div class="step-label">Carro</div>
+        </div>
+        <div class="step-line completed"></div>
+        <div class="step active" id="step-indicator-2">
+            <div class="step-circle">2</div>
+            <div class="step-label">Entrega</div>
+        </div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step" id="step-indicator-3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Pago</div>
+        </div>
+    </div>
+
+    <div class="container checkout-grid">
+        
+        <div class="checkout-forms">
+            
+            <div id="section-delivery" class="checkout-card">
+                <h2 class="checkout-title"><i class="fas fa-map-marker-alt"></i> Opciones de Entrega</h2>
+                
+                <form id="address-form">
+                    <div class="form-group">
+                        <label>Región / Departamento</label>
+                        <select class="form-control" id="delivery-region" required>
+                            <option value="">Selecciona un Departamento</option>
+                            <option value="Lima">Lima</option>
+                            <option value="Lambayeque">Lambayeque</option>
+                            <option value="Piura">Piura</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Provincia</label>
+                            <select class="form-control" id="delivery-province" required>
+                                <option value="">Selecciona Provincia</option>
+                                <option value="Chiclayo">Chiclayo</option>
+                                <option value="Lambayeque">Lambayeque</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Distrito</label>
+                            <select class="form-control" id="delivery-district" required>
+                                <option value="">Selecciona Distrito</option>
+                                <option value="Chiclayo">Chiclayo</option>
+                                <option value="La Victoria">La Victoria</option>
+                                <option value="Jose L. Ortiz">José L. Ortiz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dirección (Calle, Av, Girón)</label>
+                        <input type="text" class="form-control" id="delivery-address" placeholder="Ej: Av. Luis Gonzales 863" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Referencia / Número</label>
+                        <input type="text" class="form-control" id="delivery-reference" placeholder="Ej: Frente al parque..." required>
+                    </div>
+
+                    <button type="button" class="btn-primary-block" onclick="goToPayment()">Confirmar Dirección e Ir a Pagar</button>
+                </form>
+            </div>
+
+            <div id="section-payment" class="checkout-card" style="display: none;">
+                <h2 class="checkout-title"><i class="fas fa-credit-card"></i> Método de Pago</h2>
+                
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cmr" checked>
+                        <div class="payment-content">
+                            <i class="fas fa-credit-card" style="color: orange;"></i>
+                            <span>Tarjeta Construmart</span>
+                        </div>
+                    </label>
+                    
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="credit">
+                        <div class="payment-content">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Tarjeta de Crédito / Débito</span>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="yape">
+                        <div class="payment-content">
+                            <i class="fas fa-credit-card" style="color: cyan;"></i>
+                            <span>Billetera Digital</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="card-form" style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-radius: 5px;">
+                    <div class="form-group">
+                        <label>Número de Tarjeta</label>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha Exp.</label>
+                            <input type="text" class="form-control" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <label style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" required checked>
+                        <span style="font-size: 0.9em;">Acepto los términos y condiciones.</span>
+                    </label>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="btn-secondary" onclick="backToAddress()">Volver</button>
+                    <button type="button" class="btn-primary-block" onclick="finalizePurchase()">Finalizar Compra</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="checkout-summary-col">
+            <div class="checkout-card summary-sticky">
+                <h3 style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">Resumen de la compra</h3>
+                
+                <div id="checkout-items-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px; font-size: 0.9em;">
+                </div>
+
+                <div class="summary-row">
+                    <span>Productos</span>
+                    <span id="checkout-subtotal">S/ 0.00</span>
+                </div>
+
+                <div id="checkout-discount-row" class="summary-row" style="color: #4CAF50; display: none;">
+                    <span>Descuento <span id="checkout-coupon-code" class="discount-badge"></span></span>
+                    <span id="checkout-discount-amount" style="font-weight: bold;">-S/ 0.00</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Envío</span>
+                    <span id="checkout-shipping">S/ 23.00</span>
+                </div>
+
+                <div id="checkout-shipping-discount-row" class="summary-row" style="color: #4CAF50; display: none;">
+                    <span>Envío gratis <span id="checkout-shipping-coupon" class="discount-badge"></span></span>
+                    <span style="font-weight: bold;">-S/ 23.00</span>
+                </div>
+
+                <div class="summary-total" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd;">
+                    <span>Total</span>
+                    <span id="checkout-total" style="color: #E65000; font-size: 1.4em;">S/ 0.00</span>
+                </div>
+
+                <div class="summary-row" style="color: #4CAF50; font-weight: bold; margin-top: 10px;">
+                    <span>Con <span class="discount-badge">Tarjeta!</span></span>
+                    <span id="checkout-card-discount">S/ 0.00</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // LÓGICA DEL CHECKOUT CON GUARDADO DE COMPRAS
+        let cart = [];
+        const shippingCost = 23.00;
+        let cuponAplicado = null;
+        let deliveryInfo = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedCart = localStorage.getItem('construmartCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            } else {
+                alert("El carrito está vacío");
+                window.location.href = "index.html";
+                return;
+            }
+
+            const cuponGuardado = sessionStorage.getItem('cuponAplicado');
+            if (cuponGuardado) {
+                cuponAplicado = JSON.parse(cuponGuardado);
+            }
+
+            renderSummary();
+        });
+
+        function calcularDescuentoCupon(subtotal) {
+            if (!cuponAplicado) return 0;
+            
+            let descuento = 0;
+            
+            if (cuponAplicado.tipo === 'porcentaje') {
+                descuento = subtotal * (cuponAplicado.descuento / 100);
+            } else if (cuponAplicado.tipo === 'monto') {
+                descuento = cuponAplicado.descuento;
+            } else if (cuponAplicado.tipo === 'envio') {
+                return 0;
+            }
+            
+            return Math.min(descuento, cuponAplicado.maxDescuento || descuento);
+        }
+
+        function renderSummary() {
+            const container = document.getElementById('checkout-items-list');
+            let subtotal = 0;
+            
+            container.innerHTML = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #666;">${item.quantity}x ${item.name.substring(0, 30)}...</span>
+                        <span>S/ ${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                `;
+            }).join('');
+
+            const descuentoCupon = calcularDescuentoCupon(subtotal);
+            const descuentoEnvio = (cuponAplicado && cuponAplicado.tipo === 'envio') ? shippingCost : 0;
+            
+            document.getElementById('checkout-subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
+
+            const discountRow = document.getElementById('checkout-discount-row');
+            if (descuentoCupon > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('checkout-coupon-code').textContent = cuponAplicado.codigo;
+                document.getElementById('checkout-discount-amount').textContent = `-S/ ${descuentoCupon.toFixed(2)}`;
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            let costoEnvio = shippingCost;
+            const shippingDiscountRow = document.getElementById('checkout-shipping-discount-row');
+            
+            if (descuentoEnvio > 0) {
+                costoEnvio = 0;
+                shippingDiscountRow.style.display = 'flex';
+                document.getElementById('checkout-shipping-coupon').textContent = cuponAplicado.codigo;
+            } else {
+                shippingDiscountRow.style.display = 'none';
+            }
+            
+            document.getElementById('checkout-shipping').textContent = `S/ ${costoEnvio.toFixed(2)}`;
+
+            const totalFinal = subtotal - descuentoCupon + costoEnvio;
+            document.getElementById('checkout-total').textContent = `S/ ${totalFinal.toFixed(2)}`;
+
+            const totalConTarjeta = totalFinal * 0.88;
+            document.getElementById('checkout-card-discount').textContent = `S/ ${totalConTarjeta.toFixed(2)}`;
+        }
+
+        function goToPayment() {
+            const form = document.getElementById('address-form');
+            if(form.checkValidity()) {
+                // Guardar información de entrega
+                deliveryInfo = {
+                    region: document.getElementById('delivery-region').value,
+                    province: document.getElementById('delivery-province').value,
+                    district: document.getElementById('delivery-district').value,
+                    address: document.getElementById('delivery-address').value,
+                    reference: document.getElementById('delivery-reference').value
+                };
+
+                document.getElementById('section-delivery').style.display = 'none';
+                document.getElementById('section-payment').style.display = 'block';
+                
+                document.getElementById('step-indicator-2').classList.add('completed');
+                document.getElementById('step-indicator-2').classList.remove('active');
+                document.getElementById('line-2').classList.add('completed');
+                document.getElementById('step-indicator-3').classList.add('active');
+                
+                window.scrollTo(0,0);
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        function backToAddress() {
+            document.getElementById('section-payment').style.display = 'none';
+            document.getElementById('section-delivery').style.display = 'block';
+            
+            document.getElementById('step-indicator-3').classList.remove('active');
+            document.getElementById('line-2').classList.remove('completed');
+            document.getElementById('step-indicator-2').classList.add('active');
+            document.getElementById('step-indicator-2').classList.remove('completed');
+        }
+
+        function finalizePurchase() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                alert('Error: No se encontró información del usuario');
+                return;
+            }
+
+            // Calcular totales finales
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const descuentoCupon = calcularDescuentoCupon(subtotal);
+            const descuentoEnvio = (cuponAplicado && cuponAplicado.tipo === 'envio') ? shippingCost : 0;
+            const costoEnvioFinal = shippingCost - descuentoEnvio;
+            const totalFinal = subtotal - descuentoCupon + costoEnvioFinal;
+
+            // Obtener método de pago seleccionado
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const paymentMethodName = paymentMethod === 'cmr' ? 'Tarjeta Construmart' : 
+                                     paymentMethod === 'credit' ? 'Tarjeta de Crédito/Débito' : 
+                                     'Billetera Digital';
+
+            // Generar ID único para el pedido
+            const orderId = 'ORD-' + Date.now().toString().slice(-8);
+
+            // Calcular fecha estimada de entrega (7 días después)
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 7);
+            const deliveryDateStr = deliveryDate.toLocaleDateString('es-PE', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            // Crear objeto de orden completo
+            const newOrder = {
+                id: orderId,
+                date: new Date().toISOString(),
+                status: 'processing', // processing, shipped, completed, cancelled
+                items: cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    brand: item.brand,
+                    price: item.price,
+                    quantity: item.quantity,
+                    image: item.image,
+                    subtotal: item.price * item.quantity
+                })),
+                subtotal: subtotal,
+                discount: descuentoCupon,
+                couponCode: cuponAplicado ? cuponAplicado.codigo : null,
+                shippingCost: costoEnvioFinal,
+                shippingDiscount: descuentoEnvio,
+                total: totalFinal,
+                paymentMethod: paymentMethodName,
+                deliveryInfo: deliveryInfo,
+                estimatedDelivery: deliveryDate.toISOString()
+            };
+
+            // Registrar uso del cupón si existe
+            if (cuponAplicado && currentUser.email) {
+                registrarUsoCupon(currentUser.email, cuponAplicado.codigo);
+            }
+
+            // Agregar orden al historial del usuario
+            if (!currentUser.orders) {
+                currentUser.orders = [];
+            }
+            currentUser.orders.unshift(newOrder); // Agregar al inicio del array
+
+            // Actualizar usuario en localStorage
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Actualizar en la lista de todos los usuarios
+            let allUsers = JSON.parse(localStorage.getItem('construmartUsers')) || [];
+            const userIndex = allUsers.findIndex(u => u.email === currentUser.email);
+            if (userIndex !== -1) {
+                allUsers[userIndex] = currentUser;
+                localStorage.setItem('construmartUsers', JSON.stringify(allUsers));
+            }
+
+            // Mensaje de confirmación detallado
+            let mensaje = `¡COMPRA EXITOSA! 🎉\n\n`;
+            mensaje += `Pedido: ${orderId}\n`;
+            mensaje += `Gracias ${currentUser.name}.\n`;
+            mensaje += `\n📦 Resumen de tu pedido:`;
+            mensaje += `\n• Productos: S/ ${subtotal.toFixed(2)}`;
+            
+            if (descuentoCupon > 0) {
+                mensaje += `\n• Descuento (${cuponAplicado.codigo}): -S/ ${descuentoCupon.toFixed(2)}`;
+            }
+            
+            mensaje += `\n• Envío: S/ ${costoEnvioFinal.toFixed(2)}`;
+            
+            if (descuentoEnvio > 0) {
+                mensaje += ` (Gratis con ${cuponAplicado.codigo})`;
+            }
+            
+            mensaje += `\n\n💰 TOTAL PAGADO: S/ ${totalFinal.toFixed(2)}`;
+            mensaje += `\n💳 Método de pago: ${paymentMethodName}`;
+            mensaje += `\n\n📍 Dirección de entrega:`;
+            mensaje += `\n${deliveryInfo.address}`;
+            mensaje += `\n${deliveryInfo.district}, ${deliveryInfo.province}`;
+            mensaje += `\n\n📧 Hemos enviado el comprobante a ${currentUser.email}`;
+            mensaje += `\n🚚 Entrega estimada: ${deliveryDateStr}`;
+            mensaje += `\n\n¡Puedes ver el detalle de tu pedido en "Mi Perfil > Mis Compras"!`;
+
+            alert(mensaje);
+            
+            // Limpiar carrito, cupón y redirigir
+            localStorage.removeItem('construmartCart');
+            sessionStorage.removeItem('cuponAplicado');
+            
+            if (window.limpiarCupon) {
+                window.limpiarCupon();
+            }
+            
+            window.location.href = 'Perfil.html';
+        }
+
+        function registrarUsoCupon(email, codigoCupon) {
+            const historialCupones = JSON.parse(localStorage.getItem('historialCupones')) || {};
+            
+            if (!historialCupones[email]) {
+                historialCupones[email] = {};
+            }
+            
+            if (!historialCupones[email][codigoCupon]) {
+                historialCupones[email][codigoCupon] = 0;
+            }
+            
+            historialCupones[email][codigoCupon]++;
+            localStorage.setItem('historialCupones', JSON.stringify(historialCupones));
+        }
+    </script>
+</body>
+</html>

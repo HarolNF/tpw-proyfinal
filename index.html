@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo principal de materiales y herramientas para la construcción.">
+    <title>Construmart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos para el banner animado */
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .slide-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: white;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-arrow.prev {
+            left: 10px;
+        }
+
+        .slider-arrow.next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>🏗️ Construmart</h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions"
+                style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;">
+            </div>
+        </div>
+
+        <div class="user-options">
+            <a href="pages/Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="pages/Carrito.html">Carrito <span class="cart-badge" id="cart-count"
+                    style="display: none;">0</span> </a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" aria-current="page">Inicio</a></li>
+            <li><a href="pages/MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="pages/herramientas.html">Herramientas</a></li>
+            <li><a href="pages/Acabados.html">Acabados</a></li>
+            <li><a href="pages/Pisos.html">Pisos</a></li>
+            <li><a href="pages/Electricidad.html">Electricidad</a></li>
+            <li><a href="pages/gasfiteria.html">Gasfitería</a></li>
+            <li><a href="pages/ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Banner Slider Animado -->
+        <section class="banner-slider">
+            <div class="slider-container" id="slider">
+                <div class="slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200') center/cover;">
+                    <div class="slide-content">
+                        <h2>¡GRANDES DESCUENTOS EN TODO!</h2>
+                        <p>Renueva tu espacio con los mejores productos y AHORRA.</p>
+                        <a href="pages/ofertas.html" class="btn">Ver Todas las Ofertas</a>
+                    </div>
+                </div>
+                <div class="slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=1200') center/cover;">
+                    <div class="slide-content">
+                        <h2>HERRAMIENTAS PROFESIONALES</h2>
+                        <p>Hasta 40% OFF en marcas líderes</p>
+                        <a href="pages/herramientas.html" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="slide"
+                    style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1613545325278-f24b0cae1224?w=1200') center/cover;">
+                    <div class="slide-content">
+                        <h2>MATERIALES DE CONSTRUCCIÓN</h2>
+                        <p>Cemento, ladrillos y más al mejor precio</p>
+                        <a href="pages/MaterConstruc.html" class="btn">Explorar</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
+            <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
+
+            <div class="slider-nav">
+                <span class="slider-dot active" onclick="goToSlide(0)"></span>
+                <span class="slider-dot" onclick="goToSlide(1)"></span>
+                <span class="slider-dot" onclick="goToSlide(2)"></span>
+            </div>
+        </section>
+
+        <section id="compra-por-categoria">
+            <h2 class="section-title">Compra por Categoría</h2>
+            <div class="grid-container">
+                <article class="card">
+                    <img src="assets/img/cementro.png" alt="Sacos de cemento apilados.">
+                    <h4>Cementos y Agregados</h4>
+                    <a href="pages/MaterConstruc.html" class="btn">Ver más</a>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/ladrillo.png" alt="Ladrillos y bloques.">
+                    <h4>Ladrillos y Bloques</h4>
+                    <a href="pages/Ladrillos.html" class="btn">Ver más</a>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/HerramientaElectrica.jpg" alt="Herramientas.">
+                    <h4>Herramientas</h4>
+                    <a href="pages/herramientas.html" class="btn">Ver más</a>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/BaldePintura.jpg" alt="Acabados y revestimientos.">
+                    <h4>Acabados</h4>
+                    <a href="pages/Acabados.html" class="btn">Ver más</a>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <br>
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="grid-container">
+
+                <article class="card">
+                    <img src="assets/img/Taladroinalambrico.png" alt="Taladro percutor inalámbrico marca DeWalt.">
+                    <h4>Taladro Percutor Inalámbrico 20V</h4>
+                    <p>Marca: DeWalt</p>
+                    <p class="price">S/ 450.00</p>
+                    <button type="button" class="btn" data-id="idx-001" data-name="Taladro Percutor Inalámbrico 20V"
+                        data-brand="DeWalt" data-price="450.00" data-image="assets/img/Taladroinalambrico.png">
+                        Agregar al Carrito
+                    </button>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/CementoPortland.png" alt="Bolsa de Cemento Inka de 42.5 kg.">
+                    <h4>Cemento Portland Tipo I - 42.5 kg</h4>
+                    <p>Marca: Inka</p>
+                    <p class="price">S/ 28.50</p>
+                    <button type="button" class="btn" data-id="idx-002" data-name="Cemento Portland Tipo I - 42.5 kg"
+                        data-brand="Inka" data-price="28.50" data-image="assets/img/CementoPortland.png">
+                        Agregar al Carrito
+                    </button>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/PorcelanatoMadera.jpg" alt="Caja de porcelanato tipo madera.">
+                    <h4>Porcelanato Tipo Madera 60x60 cm</h4>
+                    <p>Marca: Celima</p>
+                    <p class="price">S/ 39.90 (m²)</p>
+                    <button type="button" class="btn" data-id="idx-003" data-name="Porcelanato Tipo Madera 60x60 cm"
+                        data-brand="Celima" data-price="39.90" data-image="assets/img/PorcelanatoMadera.jpg">
+                        Agregar al Carrito
+                    </button>
+                </article>
+
+                <article class="card">
+                    <img src="assets/img/MezcladoraDuchaNegroMate.jpg" alt="Mezcladora de ducha color negro.">
+                    <h4>Mezcladora Ducha Negro Mate</h4>
+                    <p>Marca: Orange</p>
+                    <p class="price">S/ 179.00</p>
+                    <button type="button" class="btn" data-id="idx-004" data-name="Mezcladora Ducha Negro Mate"
+                        data-brand="Orange" data-price="179.00" data-image="assets/img/MezcladoraDuchaNegroMate.jpg">
+                        Agregar al Carrito
+                    </button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <section class="brands-section">
+        <h2 class="section-title">Nuestras Marcas</h2>
+        <div class="brands-logos">
+            <img src="assets/img/LogoSilka.png" alt="Logo de Sika">
+            <img src="assets/img/DeWaltLogo.png" alt="Logo de DeWalt">
+            <img src="assets/img/LogoCelima.jpeg" alt="Logo de Celima">
+            <img src="assets/img/AcerosArequipaLogo.png" alt="Logo de Aceros Arequipa">
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="pages/quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="pages/sostenibilidad.html">Sostenibilidad</a></li>
+                <li><a href="pages/trabaja-con-nosotros.html">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="pages/contacto.html">Contáctanos</a></li>
+                <li><a href="pages/preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+                <li><a href="pages/politicas-devolucion.html">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="https://facebook.com">Facebook</a></li>
+                <li><a href="https://instagram.com">Instagram</a></li>
+                <li><a href="https://linkedin.com">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script>
+        // Desplazamiento automático
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Auto-play
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+    <script src="js/zoom.js"></script>
+</body>
+
+</html>

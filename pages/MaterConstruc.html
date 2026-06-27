@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Herramientas para profesionales y aficionados.">
+    <title>Materiales de construccion - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions"
+                style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;">
+            </div>
+        </div>
+
+        <div class="user-options">
+            <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> > Materiales de Construcción</p>
+
+        <div class="category-container">
+
+            <aside class="filters-sidebar">
+                <h3>Filtrar productos</h3>
+
+                <details class="filter-group" open>
+                    <summary>Promociones</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Envío GRATIS</label></li>
+                        <li><label><input type="checkbox"> Promociones</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group" open>
+                    <summary>Marca</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Silka</label></li>
+                        <li><label><input type="checkbox"> Apu</label></li>
+                        <li><label><input type="checkbox"> Chema</label></li>
+                        <li><label><input type="checkbox"> Pacasmayo</label></li>
+                        <li><label><input type="checkbox"> Sol</label></li>
+                        <li><label><input type="checkbox"> GENERICO</label></li>
+                        <li><label><input type="checkbox"> IMPORTADO</label></li>
+
+
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Precio</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> S/0 - S/100</label></li>
+                        <li><label><input type="checkbox"> S/101 - S/500</label></li>
+                        <li><label><input type="checkbox"> S/501 a más</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Tipo de Producto</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Techos</label></li>
+                        <li><label><input type="checkbox"> Calaminas</label></li>
+                        <li><label><input type="checkbox"> Cementos</label></li>
+                        <li><label><input type="checkbox"> Ladrillos</label></li>
+                        <li><label><input type="checkbox"> Puertas</label></li>
+                        <li><label><input type="checkbox"> Pacasmayo</label></li>
+                        <li><label><input type="checkbox"> Drywall</label></li>
+
+                    </ul>
+                </details>
+
+            </aside>
+            <main class="products-content">
+                <h2>Materiales de Construcción</h2>
+
+                <div class="product-grid">
+
+                    <article class="product-card" data-type="cemento">
+                        <div class="badge badge-new">TOP VENTAS</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/CementoSolPortland.png">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Precio online</p>
+                            <p class="brand">Sol</p>
+                            <h4>Cemento Sol Portland 42.5 kg</h4>
+                            <p class="price">S/ 30.99 </p>
+                            <button class="btn" data-id="mc-001" data-name="Cemento Sol Portland 42.5 kg"
+                                data-brand="Sol" data-price="30.99"
+                                data-image="img/CementoSolPortland.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="bloque">
+                        <div class="badge">-40%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/BloqueVidrioNeutro.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Ultimas unidades</p>
+                            <p class="brand">Chema</p>
+                            <h4>Bloque de vidrio Neutro liso transparente 19x19x10 cm</h4>
+                            <p class="price">S/ 10.80 <span class="old-price">S/ 18.00</span></p>
+                            <button class="btn" data-id="mc-002"
+                                data-name="Bloque de vidrio Neutro liso transparente 19x19x10 cm" data-brand="Chema"
+                                data-price="10.80" data-image="img/BloqueVidrioNeutro.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="drywall">
+                        <div class="product-card-image">
+                            <img src="../assets/img/PlanchasDrywall.png">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho desde 24 hrs</p>
+                            <p class="brand">Gyplac</p>
+                            <h4>Plancha de Drywall Gyplac Exterior Resistente 12mm 1.22x2.44m</h4>
+                            <p class="price">S/ 59 </p>
+                            <button class="btn" data-id="mc-003"
+                                data-name="Plancha de Drywall Gyplac Exterior Resistente 12mm 1.22x2.44m"
+                                data-brand="Gyplac" data-price="59.00"
+                                data-image="img/PlanchasDrywall.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="fierro">
+                        <div class="badge">-5%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/FierroAcerosArequipa.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">Aceros Arequipa</p>
+                            <h4>Fierro 5/8"x 9m Aceros Arequipa A615 Grado 62 ASTM Acero para Construcción</h4>
+                            <p class="price">S/ 47.50 <span class="old-price">S/ 50</span></p>
+                            <button class="btn" data-id="mc-004" data-name="Fierro 5/8&quot;x 9m Aceros Arequipa"
+                                data-brand="Aceros Arequipa" data-price="47.50"
+                                data-image="img/FierroAcerosArequipa.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="masilla drywall">
+                        <div class="badge">-30%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/MasillaDrywall.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Gyplac</p>
+                            <h4>Masilla para Drywall Gyplac lista para usar 27 kg</h4>
+                            <p class="price">S/ 70.00 <span class="old-price">S/ 100.00</span></p>
+                            <button class="btn" data-id="mc-005"
+                                data-name="Masilla para Drywall Gyplac lista para usar 27 kg" data-brand="Gyplac"
+                                data-price="70.00" data-image="img/MasillaDrywall.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="cinta drywall">
+                        <div class="badge">-30%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/CintaDrywall.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Retiro hoy</p>
+                            <p class="brand">Werken</p>
+                            <h4>Cinta malla fibra de vidrio 2" rollo 45m Werken</h4>
+                            <p class="price">S/ 48.51 <span class="old-price">S/ 69.30</span></p>
+                            <button class="btn" data-id="mc-006"
+                                data-name="Cinta malla fibra de vidrio 2&quot; rollo 45m Werken" data-brand="Werken"
+                                data-price="48.51" data-image="img/CintaDrywall.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="cinta drywall">
+                        <div class="badge">-20%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/CintaDrywall.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Retiro hoy</p>
+                            <p class="brand">Werken</p>
+                            <h4>Cinta malla fibra de vidrio 2" rollo 75m Werken</h4>
+                            <p class="price">S/ 65.92 <span class="old-price">S/ 82.40</span></p>
+                            <button class="btn" data-id="mc-007"
+                                data-name="Cinta malla fibra de vidrio 2&quot; rollo 75m Werken" data-brand="Werken"
+                                data-price="65.92" data-image="img/CintaDrywall.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="acelerador concreto">
+                        <div class="badge">-15%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/AceleradorConcreto.jpg">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Silka</p>
+                            <h4>Acelerador de concreto Sika Cem 4L</h4>
+                            <p class="price">S/ 40.63 <span class="old-price">S/ 47.80</span></p>
+                            <button class="btn" data-id="mc-008" data-name="Acelerador de concreto Sika Cem 4L"
+                                data-brand="Silka" data-price="40.63"
+                                data-image="img/AceleradorConcreto.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Sostenibilidad</a></li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/busqueda.js"></script>
+    <script src="../js/filtros.js"></script>
+    <script src="../js/zoom.js"></script>
+</body>
+
+</html>

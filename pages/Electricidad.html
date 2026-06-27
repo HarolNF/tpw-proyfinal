@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Herramientas para profesionales y aficionados.">
+    <title>Herramientas - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions"
+                style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;">
+            </div>
+        </div>
+
+        <div class="user-options">
+            <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> > Electricidad</p>
+
+        <div class="category-container">
+
+            <aside class="filters-sidebar">
+                <h3>Filtrar productos</h3>
+
+                <details class="filter-group" open>
+                    <summary>Promociones</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Envío GRATIS</label></li>
+                        <li><label><input type="checkbox"> Promociones</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group" open>
+                    <summary>Marca</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Schneider Electric</label></li>
+                        <li><label><input type="checkbox"> Bticino</label></li>
+                        <li><label><input type="checkbox"> Orange</label></li>
+                        <li><label><input type="checkbox"> Werken</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Precio</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> S/0 - S/100</label></li>
+                        <li><label><input type="checkbox"> S/101 - S/500</label></li>
+                        <li><label><input type="checkbox"> S/501 a más</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Tipo de Producto</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Tomacorriente</label></li>
+                        <li><label><input type="checkbox"> Herramientas Manuales</label></li>
+                        <li><label><input type="checkbox"> Interruptor termomagnético</label></li>
+                    </ul>
+                </details>
+
+            </aside>
+            <main class="products-content">
+                <h2>Electricidad</h2>
+
+                <div class="product-grid">
+
+                    <article class="product-card" data-type="tomacorriente">
+                        <div class="badge badge-new">4 X 2</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/Tomacorrientes1.png" alt="Combo Tomacorriente">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Orange</p>
+                            <h4>Combo de Tomacorrientes Univ. Basico Orange</h4>
+                            <p class="price">S/ 49 <span class="old-price">S/ 69</span></p>
+                            <button class="btn" data-id="elec-001" data-name="COMBO Tomacorrientes Orange"
+                                data-brand="Orange" data-price="49"
+                                data-image="img/Tomacorrientes1.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="enchufe">
+                        <div class="product-card-image">
+                            <img src="../assets/img/Enchufe1.png" alt="Enchufe">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">Werken</p>
+                            <h4>02 Enchufes planos </h4>
+                            <p class="price">S/ 9,00</p>
+                            <button class="btn" data-id="elec-002" data-name="Enchufes" data-brand="Werken"
+                                data-price="9,00" data-image="img/Enchufe1.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="tomacorriente usb">
+                        <div class="product-card-image">
+                            <img src="../assets/img/Tomacorrientes2.png">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho desde 24 hrs</p>
+                            <p class="brand">Orange</p>
+                            <h4>Tomacorriente Universal + 2 Tomas USB Basic Orange</h4>
+                            <p class="price">S/9</p>
+                            <button class="btn" data-id="elec-003" data-name="Tomacorriente + 2 USB" data-brand="Orange"
+                                data-price="9" data-image="img/Tomacorrientes2.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="termomagnetico interruptor">
+                        <div class="badge">-20%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/termomagnetico1.jpg" alt="termomagnético">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Schneider Electric</p>
+                            <h4>Interruptor Termomagnético Easy9 Mcb 2x40A Schneider Electric Blanco PVC</h4>
+                            <p class="price">S/ 40 <span class="old-price">S/ 50</span></p>
+                            <button class="btn" data-id="elec-004" data-name="Termomagnético Mcb 2x40A"
+                                data-brand="Schneider Electric" data-price="40"
+                                data-image="img/termomagnetico1.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="lampara emergencia">
+                        <div class="badge">-40%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/LampDeEmergencia1.jpg" alt="">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">Werken</p>
+                            <h4>Lámpara de emergencia 2 luces 20 leds 3 horas 4w Werken</h4>
+                            <p class="price">S/ 29.90 <span class="old-price">S/ 49.90</span></p>
+                            <button class="btn" data-id="elec-005" data-name="ámpara de emergencia 2 luces"
+                                data-brand="Werken" data-price="29.90"
+                                data-image="img/LampDeEmergencia1.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="cable">
+                        <div class="badge">-10%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/cable2.jpg" alt="Taladro Atornillador">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Celsa</p>
+                            <h4>Cable THW-90 450/750 V 14 AWG Celsa Negro 100m</h4>
+                            <p class="price">S/ 125 <span class="old-price">S/ 139</span></p>
+                            <button class="btn" data-id="elec-006" data-name="Cable THW-90 450/750 V 14 100m"
+                                data-brand="Celsa" data-price="125" data-image="img/cable2.png">Agregar</button>
+                        </div>
+                    </article>
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Sostenibilidad</a></li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/busqueda.js"></script>
+    <script src="../js/filtros.js"></script>
+    <script src="../js/zoom.js"></script>
+</body>
+
+</html>

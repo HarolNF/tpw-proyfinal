@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Herramientas para profesionales y aficionados.">
+    <title>Herramientas - Construmart</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+        </div>
+
+        <div class="search-bar">
+            <form id="search-form" onsubmit="return realizarBusqueda(event)">
+                <input type="search" id="search-input" name="q" placeholder="¿Qué estás buscando?" autocomplete="off">
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="search-suggestions"
+                style="display: none; position: absolute; background: white; border: 1px solid #ddd; width: 80%; max-height: 300px; overflow-y: auto; z-index: 1000;">
+            </div>
+        </div>
+
+        <div class="user-options">
+            <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+            <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <p class="breadcrumbs"><a href="../index.html">Inicio</a> > Herramientas</p>
+
+        <div class="category-container">
+
+            <aside class="filters-sidebar">
+                <h3>Filtrar productos</h3>
+
+                <details class="filter-group" open>
+                    <summary>Promociones</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Envío GRATIS</label></li>
+                        <li><label><input type="checkbox"> Promociones</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group" open>
+                    <summary>Marca</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> DeWalt</label></li>
+                        <li><label><input type="checkbox"> Bosch</label></li>
+                        <li><label><input type="checkbox"> Stanley</label></li>
+                        <li><label><input type="checkbox"> Makita</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Precio</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> S/0 - S/100</label></li>
+                        <li><label><input type="checkbox"> S/101 - S/500</label></li>
+                        <li><label><input type="checkbox"> S/501 a más</label></li>
+                    </ul>
+                </details>
+
+                <details class="filter-group">
+                    <summary>Tipo de Producto</summary>
+                    <ul>
+                        <li><label><input type="checkbox"> Herramientas Eléctricas</label></li>
+                        <li><label><input type="checkbox"> Herramientas Manuales</label></li>
+                        <li><label><input type="checkbox"> Cajas y Organizadores</label></li>
+                    </ul>
+                </details>
+
+            </aside>
+            <main class="products-content">
+                <h2>Herramientas</h2>
+
+                <div class="product-grid">
+
+                    <article class="product-card" data-type="combo taladro herramienta electrica">
+                        <div class="badge">-32%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/ComboTaladro.png" alt="Combo Bosch">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Bosch</p>
+                            <h4>COMBO Bosch Inalámbrico: Taladro + Amoladora Gws 18v</h4>
+                            <p class="price">S/ 1,299 <span class="old-price">S/ 1,919</span></p>
+                            <button class="btn" data-id="herr-001"
+                                data-name="COMBO Bosch Inalámbrico: Taladro + Amoladora Gws 18v" data-brand="Bosch"
+                                data-price="1299" data-image="img/ComboTaladro.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="combo taladro herramienta electrica">
+                        <div class="badge badge-new">LO NUEVO</div>
+                        <div class="badge" style="top: 50px;">-41%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/ComoDeWalt.png" alt="Combo Dewalt">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">DeWalt</p>
+                            <h4>COMBO Dewalt Inalámbrico: Taladro Percutor + Esmeril</h4>
+                            <p class="price">S/ 1,099 <span class="old-price">S/ 1,879</span></p>
+                            <button class="btn" data-id="herr-002"
+                                data-name="COMBO Dewalt Inalámbrico: Taladro Percutor + Esmeril" data-brand="DeWalt"
+                                data-price="1099" data-image="img/ComoDeWalt.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="sierra herramienta electrica">
+                        <div class="badge">-27%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/Combo1Disco.png" alt="Sierra Circular Stanley">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho desde 24 hrs</p>
+                            <p class="brand">Stanley</p>
+                            <h4>Sierra Circular SC16 1600W + 2 Discos 7-1/4"</h4>
+                            <p class="price">S/ 259 <span class="old-price">S/ 329</span></p>
+                            <button class="btn" data-id="herr-003"
+                                data-name="Sierra Circular SC16 1600W + 2 Discos 7-1/4&quot;" data-brand="Stanley"
+                                data-price="259" data-image="img/Combo1Disco.png">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="taladro herramienta electrica">
+                        <div class="badge">-16%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/TaladroPerc.jpg" alt="Taladro Inalámbrico">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">DeWalt</p>
+                            <h4>Taladro Percutor 1/2" 20V + Atornillador de Impacto</h4>
+                            <p class="price">S/ 949 <span class="old-price">S/ 1,129</span></p>
+                            <button class="btn" data-id="herr-004"
+                                data-name="Taladro Percutor 1/2&quot; 20V + Atornillador de Impacto" data-brand="DeWalt"
+                                data-price="949" data-image="img/TaladroPerc.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="herramienta manual">
+                        <div class="badge">-31%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/JuegoHerramientas.jpg" alt="Set de Herramientas">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Despacho express</p>
+                            <p class="brand">Stanley</p>
+                            <h4>Juego de Herramientas Mecánicas 122 Piezas</h4>
+                            <p class="price">S/ 379 <span class="old-price">S/ 549</span></p>
+                            <button class="btn" data-id="herr-005"
+                                data-name="Juego de Herramientas Mecánicas 122 Piezas" data-brand="Stanley"
+                                data-price="379" data-image="img/JuegoHerramientas.jpg">Agregar</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card" data-type="taladro herramienta electrica">
+                        <div class="badge">-27%</div>
+                        <div class="product-card-image">
+                            <img src="../assets/img/TaladroAtornillador.png" alt="Taladro Atornillador">
+                        </div>
+                        <div class="product-card-info">
+                            <p class="shipping-tag">Envío gratis</p>
+                            <p class="brand">Makita</p>
+                            <h4>Taladro Atornillador Inalámbrico 12V + 2 Baterías</h4>
+                            <p class="price">S/ 399 <span class="old-price">S/ 549</span></p>
+                            <button class="btn" data-id="herr-006"
+                                data-name="Taladro Atornillador Inalámbrico 12V + 2 Baterías" data-brand="Makita"
+                                data-price="399" data-image="img/TaladroAtornillador.png">Agregar</button>
+                        </div>
+                    </article>
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <h4>Sobre Construmart</h4>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Sostenibilidad</a></li>
+                <li><a href="#">Trabaja con Nosotros</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Atención al Cliente</h4>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Políticas de Devolución</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <p>📍 Av. Luis Gonzales 863, Chiclayo, Perú</p>
+            <p>📞 Tel: (01) 555-1234</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Construmart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/busqueda.js"></script>
+    <script src="../js/filtros.js"></script>
+    <script src="../js/zoom.js"></script>
+</body>
+
+</html>

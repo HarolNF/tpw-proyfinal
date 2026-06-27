@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear Cuenta - Construmart</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<style>
+      /* 1. El contenedor  */
+      .wrapper form .input-box {
+          height: auto !important; /* Fundamental para que crezca */
+          min-height: 52px;        /* Altura mínima */
+          margin-bottom: 25px;     /* Empuja el siguiente campo hacia abajo */
+          position: relative;
+      }
+
+      /* 2. El input mantiene su altura y diseño */
+      form .input-box input {
+          height: 52px; /* Altura fija para el campo de texto */
+          padding-right: 45px !important; /* Espacio para el ícono (fix anterior) */
+          width: 100%;
+      }
+
+      /* 3. Estilos del mensaje de error */
+      .input-error {
+          border-color: #d32f2f !important;
+          background-color: #fff8f8;
+      }
+      
+      .error-message {
+          color: #d32f2f;
+          font-size: 0.85em;
+          margin-top: 5px;
+          display: none;
+          font-weight: 500;
+      }
+      
+      /* 4. Estilos de la barra de fortaleza (Contraseña débil, etc) */
+      .password-strength {
+          margin-top: 12px;      /* Separación del input de arriba */
+          margin-bottom: 15px;   /* Separación extra hacia abajo */
+          font-size: 0.9em;
+          width: 100%;           /* Asegura que ocupe el ancho */
+          display: block;        /* Asegura que se comporte como bloque */
+      }
+      
+      .strength-bar {
+          height: 5px;
+          background: #ddd;
+          border-radius: 3px;
+          margin-top: 5px;
+          overflow: hidden;
+      }
+      
+      .strength-fill {
+          height: 100%;
+          width: 0%;
+          transition: all 0.3s;
+      }
+      
+      .strength-weak { background: #d32f2f; width: 33%; }
+      .strength-medium { background: #f57c00; width: 66%; }
+      .strength-strong { background: #4caf50; width: 100%; }
+      
+      /* 5. Iconos */
+      .input-icon {
+          position: absolute;
+          right: 15px;
+          /* Ajustamos 'top' para que se alinee con el INPUT, no con el contenedor entero */
+          top: 26px; 
+          transform: translateY(-50%);
+          color: #999;
+          font-size: 0.9em;
+          pointer-events: none;
+      }
+      
+      .input-icon.valid { color: #4caf50; }
+      .input-icon.invalid { color: #d32f2f; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+        <h1><a href="../index.html" style="color: #ffffff; text-decoration: none;">🏗️ Construmart</a></h1>
+    </div>
+    <div class="search-bar">
+        <form action="/buscar" method="get">
+            <input type="search" name="q" placeholder="¿Qué estás buscando?">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div class="user-options">
+        <a href="Cuenta y Pedidos.html" id="user-link">Mi Cuenta y Pedidos</a>
+        <a href="Carrito.html">Carrito <span class="cart-badge" id="cart-count" style="display: none;">0</span></a>
+    </div>
+</header>
+    <nav>
+        <ul>
+            <li><a href="MaterConstruc.html">Materiales de Construcción</a></li>
+            <li><a href="herramientas.html">Herramientas</a></li>
+            <li><a href="Acabados.html">Acabados</a></li>
+            <li><a href="Pisos.html">Pisos</a></li>
+            <li><a href="Electricidad.html">Electricidad</a></li>
+            <li><a href="gasfiteria.html">Gasfitería</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+        </ul>
+    </nav>
+  <div class="wrapper">
+    <div class="title"><span>Crea tu cuenta</span></div>
+    <form action="#" id="register-form"> 
+      <div class="input-box">
+        <input type="text" id="reg-name" placeholder="Nombre completo" required>
+        <span class="input-icon" id="name-icon"></span>
+        <div class="error-message" id="name-error">El nombre debe tener al menos 3 caracteres</div>
+      </div>
+      
+      <div class="input-box">
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <span class="input-icon" id="email-icon"></span>
+        <div class="error-message" id="email-error">Ingresa un email válido</div>
+      </div>
+      
+      <div class="input-box">
+        <input type="text" id="reg-dni" placeholder="DNI (8 dígitos)" maxlength="8" pattern="[0-9]{8}">
+        <span class="input-icon" id="dni-icon"></span>
+        <div class="error-message" id="dni-error">El DNI debe tener 8 dígitos</div>
+      </div>
+      
+      <div class="input-box">
+        <input type="tel" id="reg-phone" placeholder="Teléfono (9 dígitos)" maxlength="9" pattern="[0-9]{9}">
+        <span class="input-icon" id="phone-icon"></span>
+        <div class="error-message" id="phone-error">El teléfono debe tener 9 dígitos</div>
+      </div>
+      
+      <div class="input-box">
+        <input type="password" id="reg-pass" placeholder="Contraseña" required>
+        <span class="input-icon" id="pass-icon"></span>
+        <div class="password-strength">
+            <div id="strength-text" style="margin-bottom: 5px;">Fortaleza de contrasea</div>
+            <div class="strength-bar">
+                <div class="strength-fill" id="strength-fill"></div>
+            </div>
+        </div>
+        <div class="error-message" id="pass-error">La contraseña debe tener al menos 6 caracteres</div>
+      </div>
+      
+      <div class="input-box">
+        <input type="password" id="reg-pass-confirm" placeholder="Confirmar contraseña" required>
+        <span class="input-icon" id="pass-confirm-icon"></span>
+        <div class="error-message" id="pass-confirm-error">Las contraseñas no coinciden</div>
+      </div>
+      
+      <div class="policy">
+        <input type="checkbox" id="terms-checkbox" required>
+        <h3>Acepto los <a href="#" style="color: #E65000;">términos y condiciones</a></h3>
+      </div>
+      
+      <div class="input-box button">
+        <input type="Submit" value="Completar registro">
+      </div>
+      
+      <div class="signup-link">
+        <h3>¿Ya tienes cuenta? <a href="Cuenta y Pedidos.html">Inicia sesión</a></h3>
+      </div>
+    </form>
+  </div>
+
+  <script>
+      // Validaciones en tiempo real
+      const regName = document.getElementById('reg-name');
+      const regEmail = document.getElementById('reg-email');
+      const regDni = document.getElementById('reg-dni');
+      const regPhone = document.getElementById('reg-phone');
+      const regPass = document.getElementById('reg-pass');
+      const regPassConfirm = document.getElementById('reg-pass-confirm');
+
+      // Validar nombre
+      regName.addEventListener('input', function() {
+          const isValid = this.value.trim().length >= 3;
+          updateValidation(this, 'name', isValid);
+      });
+
+      // Validar email
+      regEmail.addEventListener('input', function() {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const isValid = emailRegex.test(this.value);
+          updateValidation(this, 'email', isValid);
+      });
+
+      // Validar DNI
+      regDni.addEventListener('input', function() {
+          // Solo números
+          this.value = this.value.replace(/[^0-9]/g, '');
+          const isValid = this.value.length === 8;
+          updateValidation(this, 'dni', isValid);
+      });
+
+      // Validar teléfono
+      regPhone.addEventListener('input', function() {
+          // Solo números
+          this.value = this.value.replace(/[^0-9]/g, '');
+          const isValid = this.value.length === 9;
+          updateValidation(this, 'phone', isValid);
+      });
+
+      // Validar contraseña y mostrar fortaleza
+      regPass.addEventListener('input', function() {
+          const password = this.value;
+          const isValid = password.length >= 6;
+          updateValidation(this, 'pass', isValid);
+          
+          // Calcular fortaleza
+          let strength = 0;
+          if (password.length >= 6) strength++;
+          if (password.length >= 10) strength++;
+          if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+          if (/[0-9]/.test(password)) strength++;
+          if (/[^a-zA-Z0-9]/.test(password)) strength++;
+          
+          updatePasswordStrength(strength);
+          
+          // Validar confirmación si ya tiene algo
+          if (regPassConfirm.value) {
+              const confirmValid = password === regPassConfirm.value;
+              updateValidation(regPassConfirm, 'pass-confirm', confirmValid);
+          }
+      });
+
+      // Validar confirmación de contraseña
+      regPassConfirm.addEventListener('input', function() {
+          const isValid = this.value === regPass.value;
+          updateValidation(this, 'pass-confirm', isValid);
+      });
+
+      function updateValidation(input, fieldName, isValid) {
+          const icon = document.getElementById(`${fieldName}-icon`);
+          const error = document.getElementById(`${fieldName}-error`);
+          
+          if (input.value.length === 0) {
+              input.classList.remove('input-error');
+              icon.className = 'input-icon';
+              icon.textContent = '';
+              error.style.display = 'none';
+              return;
+          }
+          
+          if (isValid) {
+              input.classList.remove('input-error');
+              icon.className = 'input-icon valid';
+              icon.innerHTML = '<i class="fas fa-check"></i>';
+              error.style.display = 'none';
+          } else {
+              input.classList.add('input-error');
+              icon.className = 'input-icon invalid';
+              icon.innerHTML = '<i class="fas fa-times"></i>';
+              error.style.display = 'block';
+          }
+      }
+
+      function updatePasswordStrength(strength) {
+          const fill = document.getElementById('strength-fill');
+          const text = document.getElementById('strength-text');
+          
+          fill.className = 'strength-fill';
+          
+          if (strength <= 2) {
+              fill.classList.add('strength-weak');
+              text.textContent = 'Contraseña débil';
+              text.style.color = '#d32f2f';
+          } else if (strength <= 4) {
+              fill.classList.add('strength-medium');
+              text.textContent = 'Contraseña media';
+              text.style.color = '#f57c00';
+          } else {
+              fill.classList.add('strength-strong');
+              text.textContent = 'Contraseña fuerte';
+              text.style.color = '#4caf50';
+          }
+      }
+
+      // Envío del formulario
+      document.getElementById('register-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // Validaciones finales
+          const name = regName.value.trim();
+          const email = regEmail.value.trim();
+          const dni = regDni.value.trim();
+          const phone = regPhone.value.trim();
+          const pass = regPass.value;
+          const confirmPass = regPassConfirm.value;
+
+          // Validar nombre
+          if (name.length < 3) {
+              alert('El nombre debe tener al menos 3 caracteres');
+              regName.focus();
+              return;
+          }
+
+          // Validar email
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+              alert('Por favor ingresa un email válido');
+              regEmail.focus();
+              return;
+          }
+
+          // Validar DNI (opcional pero si se llena debe ser válido)
+          if (dni && dni.length !== 8) {
+              alert('El DNI debe tener 8 dígitos');
+              regDni.focus();
+              return;
+          }
+
+          // Validar teléfono (opcional pero si se llena debe ser válido)
+          if (phone && phone.length !== 9) {
+              alert('El teléfono debe tener 9 dígitos');
+              regPhone.focus();
+              return;
+          }
+
+          // Validar contraseña
+          if (pass.length < 6) {
+              alert('La contraseña debe tener al menos 6 caracteres');
+              regPass.focus();
+              return;
+          }
+
+          // Validar coincidencia de contraseñas
+          if (pass !== confirmPass) {
+              alert('Las contraseñas no coinciden');
+              regPassConfirm.focus();
+              return;
+          }
+
+          // Validar términos y condiciones
+          if (!document.getElementById('terms-checkbox').checked) {
+              alert('Debes aceptar los términos y condiciones');
+              return;
+          }
+
+          // Obtener usuarios existentes
+          let users = JSON.parse(localStorage.getItem('construmartUsers')) || [];
+
+          // Verificar si el correo ya existe
+          const userExists = users.some(user => user.email === email);
+          if (userExists) {
+              alert('Este correo ya está registrado. Por favor inicia sesión o usa otro correo.');
+              return;
+          }
+
+          // Crear nuevo usuario
+          const newUser = {
+              name: name,
+              email: email,
+              dni: dni || '',
+              phone: phone || '',
+              password: pass,
+              createdAt: new Date().toISOString(),
+              addresses: [],
+              paymentMethods: [],
+              orders: []
+          };
+
+          users.push(newUser);
+          localStorage.setItem('construmartUsers', JSON.stringify(users));
+
+          alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
+          window.location.href = 'Cuenta y Pedidos.html';
+      });
+  </script>
+</body>
+</html>
